@@ -9,16 +9,24 @@ import { HookApp } from './hookApp'
 import { CounterApp } from './01-useState/CounterApp';
 import { CounterWithCustomHook } from './01-useState/CounterWithCustomHook';
 import { SimpleForm } from './02-useEffect/SimpleForm';
+import { FormWithCustomHook } from './02-useEffect/FormWithCustomHook';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <HookApp />
-    <CounterApp />
-    <hr />
-    <hr />
-    <CounterWithCustomHook />
-    <hr />
-    <hr />
-    <SimpleForm />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <>
+    {/* <HookApp /> */}
+    {/* <CounterApp /> */}
+    {/* <hr /> */}
+    {/* <hr /> */}
+    {/* <CounterWithCustomHook /> */}
+    {/* <hr /> */}
+    {/* <hr /> */}
+    {/* <SimpleForm /> */}
+    {/* <hr /> */}
+    {/* <hr /> */}
+    <FormWithCustomHook />
+
+  </>
+  // </React.StrictMode>,
 )
