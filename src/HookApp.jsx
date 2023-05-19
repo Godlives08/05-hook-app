@@ -3,8 +3,8 @@ import React from 'react'
 export const HookApp = () => {
     return (
         <>
-        <h1>Hooks - App</h1>
-          
+            <h1>Hooks - App</h1>
+
         </>
     )
 }
