@@ -1,21 +1,25 @@
 import React, { useState } from 'react'
 
-export const useCounter = (iniValue = 10) => {
+export const useCounter = (iniValue = 10, lmde = 1) => {
+
     const [counter, setCounter] = useState(iniValue)
-
-    const increment = () =>{
-        setCounter(counter + 1);
+    const increment = (id) => {
+        setCounter(id + 1);
     }
 
-    const decrement  = () =>{
-        setCounter(counter - 1);
+    const decrement = (id) => {
+        setCounter(id - 1);
     }
 
-    const reset  = () =>{
+    const reset = () => {
         setCounter(iniValue);
     }
 
-    return{
-        counter,increment,decrement,reset
+    if (counter < lmde) {
+        setCounter(iniValue)
+    }
+
+    return {
+        counter, increment, decrement, reset, setCounter
     }
 }

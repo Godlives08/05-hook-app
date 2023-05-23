@@ -1,7 +1,16 @@
-body{
+body {
   padding: 20px;
 }
 
-button{
+button {
   margin-left: 5px;
+}
+
+.imgpoke {
+  width: 25%;
+  display: inline;
+}
+
+.cardpoke {
+  display: flow-root !important;
 }
