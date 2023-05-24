@@ -6,7 +6,7 @@ export const MultipleCustomHooks = () => {
 
   const { counter, decrement, increment, reset, setCounter } = useCounter(1);
   const { data, hasError, isLoadind, e, setUrl2 } = useFetch(`https://pokeapi.co/api/v2/pokemon/${counter}/`);
-
+  // console.log(data);
 
   // console.log(data, hasError, isLoadind);
 

@@ -1,18 +1,28 @@
 import React from 'react'
+import { DetallesPokemon } from './';
 
-export const DatosPokemon = ({data,setUrl2}) => {
-    const { sprites: { back_default, back_shiny, front_default, front_shiny } = {}, name, id } = !!data && data;
+
+
+export const DatosPokemon = ({ data, setUrl2 }) => {
+    const { sprites: { back_default, back_shiny, front_default, front_shiny } = {}, name, id, species: { url } = {} } = !!data && data;
 
     return (
         <>
+
             <div className="card cardpoke">
+                <div className="float-end m-3">
+                    {id > 1 ? (<button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id - 1}/`)} className="btn btn-primary">◀</button>) : ''}
+                    <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${1}/`)} className="btn btn-primary">🔄</button>
+                    <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id + 1}/`)} className="btn btn-primary">▶</button>
+                </div>
+                <h2 className="card-title m-3">{name}</h2>
                 <img src={front_default} className="card-img-top imgpoke" alt="..." />
                 <img src={back_default} className="card-img-top imgpoke" alt="..." />
                 <img src={front_shiny} className="card-img-top imgpoke" alt="..." />
                 <img src={back_shiny} className="card-img-top imgpoke" alt="..." />
                 <div className="card-body">
-                    <h5 className="card-title">{name}</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    <DetallesPokemon url={url} />
                 </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">An item</li>
@@ -35,11 +45,7 @@ export const DatosPokemon = ({data,setUrl2}) => {
             </blockquote>
 
             <hr />
-            <div className="float-end">
-                {id > 1 ? (<button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id - 1}/`)} className="btn btn-primary">◀</button>) : ''}
-                <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${1}/`)} className="btn btn-primary">🔄</button>
-                <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id + 1}/`)} className="btn btn-primary">▶</button>
-            </div>
+
         </>
     )
 }
