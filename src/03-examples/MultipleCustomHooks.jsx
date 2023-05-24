@@ -125,9 +125,9 @@ export const MultipleCustomHooks = () => {
 
                 <hr />
                 <div className="float-end">
-                  {id > 1 ? (<button onClick={() => decrement(id)} className="btn btn-primary">◀</button>) : ''}
-                  <button onClick={reset} className="btn btn-primary">🔄</button>
-                  <button onClick={() => increment(id)} className="btn btn-primary">▶</button>
+                  {id > 1 ? (<button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id - 1}/`)} className="btn btn-primary">◀</button>) : ''}
+                  <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${1}/`)} className="btn btn-primary">🔄</button>
+                  <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id + 1}/`)} className="btn btn-primary">▶</button>
                 </div>
 
               </>
