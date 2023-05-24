@@ -2,19 +2,15 @@ import React, { useState } from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { useCounter } from '../hooks/useCounter';
 import { SearchPoke } from '../components/SearchPoke';
+import { ListPokemon } from '../components/ListPokemon';
 
 export const MultipleCustomHooks = () => {
-
-  const [page, setPage] = useState(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=15`);
+  
   const { counter, decrement, increment, reset, setCounter } = useCounter(1);
   const { data, hasError, isLoadind, e, setUrl2 } = useFetch(`https://pokeapi.co/api/v2/pokemon/${counter}/`);
-  const { data: datalist, hasError: hasErrorlist, isLoadind: isLoadindlist, e: elist, setUrl2:setUrl2list } = useFetch(page);
-  console.log(data, hasError, isLoadind);
-
-  const { results, next, previous } = !!datalist && datalist;
   const { sprites: { back_default, back_shiny, front_default, front_shiny } = {}, name, id } = !!data && data;
-  console.log(results);
 
+  // console.log(data, hasError, isLoadind);
 
 
   if (hasError === 404) {
@@ -51,28 +47,7 @@ export const MultipleCustomHooks = () => {
         </div>
 
         <div className="col-2">
-          <ul className="list-group">
-            {
-              results?.map((results) => (
-                <li className="list-group-item" key={results.name}><a className='btn btn-outline-secondary w-100' onClick={() =>{setUrl2(results.url)}} href="#">{results.name}</a> </li>
-
-              ))
-            }
-            <li className="list-group-item">
-              <nav aria-label="Page navigation example">
-                <ul className="pagination justify-content-center">
-                  <li className="page-item">
-                    <button onClick={() => setUrl2list(previous)} className="page-link">Previous</button>
-
-                  </li>
-
-                  <li className="page-item">
-                    <button onClick={() => setUrl2list(next)} className="page-link">Next</button>
-                  </li>
-                </ul>
-              </nav>
-            </li>
-          </ul>
+        <ListPokemon setUrl2={setUrl2}/>
           <div className="">
 
 

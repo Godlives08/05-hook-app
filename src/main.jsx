@@ -14,7 +14,7 @@ import { MultipleCustomHooks } from './03-examples/MultipleCustomHooks';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+  <React.StrictMode>
   <>
 
     {// Practica 01
@@ -36,5 +36,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <MultipleCustomHooks />
 
   </>
-  // </React.StrictMode>,
+  </React.StrictMode>
 )

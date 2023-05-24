@@ -14,3 +14,7 @@ button {
 .cardpoke {
   display: flow-root !important;
 }
+
+.iconpoke{
+  width: 20% !important;
+}
