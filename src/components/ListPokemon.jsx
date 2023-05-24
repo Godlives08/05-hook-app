@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { useFetch } from '../hooks/useFetch';
-import { IconListPokemon } from './IconListPokemon';
+import { useFetch } from '../hooks';
+import { IconListPokemon } from '../components';
 
 export const ListPokemon = ({setUrl2}) => {
     const [page, setPage] = useState(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=15`);
     const { data: datalist, hasError: hasErrorlist, isLoadind: isLoadindlist, e: elist, setUrl2:setUrl2list } = useFetch(page);
-    const { results, next, previous } = !!datalist && datalist;
-    console.log(results);
+    const { results, next, previous, count } = !!datalist && datalist;
+    console.log(datalist);
     return (
         <>
             <ul className="list-group">

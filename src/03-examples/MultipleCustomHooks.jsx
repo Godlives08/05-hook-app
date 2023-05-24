@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
-import { useFetch } from '../hooks/useFetch'
-import { useCounter } from '../hooks/useCounter';
-import { SearchPoke } from '../components/SearchPoke';
-import { ListPokemon } from '../components/ListPokemon';
+import { useFetch, useCounter } from '../hooks'
+import { SearchPoke, ListPokemon, DatosPokemon } from '../components';
+
 
 export const MultipleCustomHooks = () => {
-  
+
   const { counter, decrement, increment, reset, setCounter } = useCounter(1);
   const { data, hasError, isLoadind, e, setUrl2 } = useFetch(`https://pokeapi.co/api/v2/pokemon/${counter}/`);
-  const { sprites: { back_default, back_shiny, front_default, front_shiny } = {}, name, id } = !!data && data;
+
 
   // console.log(data, hasError, isLoadind);
 
@@ -33,9 +31,7 @@ export const MultipleCustomHooks = () => {
 
   return (
     <>
-
       <div className="row">
-
         <div className="col-12">
           <nav className="navbar navbar-light bg-light">
             <div className="container-fluid">
@@ -45,76 +41,23 @@ export const MultipleCustomHooks = () => {
           </nav>
           <hr />
         </div>
-
         <div className="col-2">
-        <ListPokemon setUrl2={setUrl2}/>
-          <div className="">
-
-
-
-
-            {/* <button onClick={reset} className="btn btn-primary">🔄</button> */}
-
-          </div>
-
+          <ListPokemon setUrl2={setUrl2} />
         </div>
         <div className="col-10">
           {
-
             isLoadind ? (
               <div className="alert alert-info text-center">
                 Loading...
               </div>
             ) : (
-
-
               <>
-                <div className="card cardpoke">
-                  <img src={front_default} className="card-img-top imgpoke" alt="..." />
-                  <img src={back_default} className="card-img-top imgpoke" alt="..." />
-                  <img src={front_shiny} className="card-img-top imgpoke" alt="..." />
-                  <img src={back_shiny} className="card-img-top imgpoke" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">{name}</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                  {/* <ul className="list-group list-group-flush">
-        <li className="list-group-item">An item</li>
-        <li className="list-group-item">A second item</li>
-        <li className="list-group-item">A third item</li>
-      </ul> */}
-                  <div className="card-body">
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
-                  </div>
-                </div>
-                <blockquote className="blockquote text-end">
-                  <p className="mb-1">
-                    {name}
-                  </p>
-                  <footer className="blockquote-footer">
-                    {id}
-                  </footer>
-
-                </blockquote>
-
-                <hr />
-                <div className="float-end">
-                  {id > 1 ? (<button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id - 1}/`)} className="btn btn-primary">◀</button>) : ''}
-                  <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${1}/`)} className="btn btn-primary">🔄</button>
-                  <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id + 1}/`)} className="btn btn-primary">▶</button>
-                </div>
-
+                <DatosPokemon data={data} setUrl2={setUrl2} />
               </>
-
-
-
             )
           }
         </div>
-
       </div>
-
     </>
   )
 }
