@@ -5,11 +5,11 @@ import { SearchPoke } from '../components/SearchPoke';
 
 export const MultipleCustomHooks = () => {
 
-  const [page, setPage] = useState(`https://pokeapi.co/api/v2/pokemon/`);
+  const [page, setPage] = useState(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=15`);
   const { counter, decrement, increment, reset, setCounter } = useCounter(1);
-  const { data, hasError, isLoadind, e } = useFetch(`https://pokeapi.co/api/v2/pokemon/${counter}/`);
+  const { data, hasError, isLoadind, e, setUrl2 } = useFetch(`https://pokeapi.co/api/v2/pokemon/${counter}/`);
   const { data: datalist, hasError: hasErrorlist, isLoadind: isLoadindlist, e: elist } = useFetch(page);
-  // console.log(data, hasError, isLoadind);
+  console.log(data, hasError, isLoadind);
 
   const { results, next, previous } = !!datalist && datalist;
   const { sprites: { back_default, back_shiny, front_default, front_shiny } = {}, name, id } = !!data && data;
@@ -23,7 +23,7 @@ export const MultipleCustomHooks = () => {
         <nav className="navbar navbar-light bg-light">
           <div className="container-fluid">
             <a className="navbar-brand"><h1>Poke-Dex</h1></a>
-            <SearchPoke setCounter={setCounter} />
+            <SearchPoke setUrl2={setUrl2} />
           </div>
         </nav>
         <hr />
@@ -44,29 +44,50 @@ export const MultipleCustomHooks = () => {
           <nav className="navbar navbar-light bg-light">
             <div className="container-fluid">
               <a className="navbar-brand"><h1>Poke-Dex</h1></a>
-              <SearchPoke setCounter={setCounter} />
+              <SearchPoke setUrl2={setUrl2} />
             </div>
           </nav>
           <hr />
         </div>
 
         <div className="col-2">
-          <ul>
+          <ul className="list-group">
             {
               results?.map((results) => (
-                <li key={results.name}>{results.name}</li>
+                <li className="list-group-item" key={results.name}><a className='btn btn-outline-secondary w-100' onClick={() =>{setUrl2(results.url)}} href="#">{results.name}</a> </li>
+
               ))
             }
+            <li className="list-group-item">
+              <nav aria-label="Page navigation example">
+                <ul className="pagination justify-content-center">
+                  <li className="page-item">
+                    <button onClick={() => setPage(previous)} className="page-link">Previous</button>
+
+                  </li>
+
+                  <li className="page-item">
+                    <button onClick={() => setPage(next)} className="page-link">Next</button>
+                  </li>
+                </ul>
+              </nav>
+            </li>
           </ul>
-          <button onClick={() => setPage(previous)} className="btn btn-primary">◀</button>
-          {/* <button onClick={reset} className="btn btn-primary">🔄</button> */}
-          <button onClick={() => setPage(next)} className="btn btn-primary">▶</button>
+          <div className="">
+
+
+
+
+            {/* <button onClick={reset} className="btn btn-primary">🔄</button> */}
+
+          </div>
+
         </div>
         <div className="col-10">
           {
 
             isLoadind ? (
-              <div className='alert alert-info text-center'>
+              <div className="alert alert-info text-center">
                 Loading...
               </div>
             ) : (
@@ -92,7 +113,7 @@ export const MultipleCustomHooks = () => {
                     <a href="#" className="card-link">Another link</a>
                   </div>
                 </div>
-                <blockquote className='blockquote text-end'>
+                <blockquote className="blockquote text-end">
                   <p className="mb-1">
                     {name}
                   </p>

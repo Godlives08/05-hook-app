@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const SearchPoke = ({setCounter}) => {
+export const SearchPoke = ({setUrl2}) => {
 
     const [inputValue, setInputValue] = useState('');
     const onChangeInput = (event) => {
@@ -10,7 +10,7 @@ export const SearchPoke = ({setCounter}) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        setCounter(inputValue);
+        setUrl2(`https://pokeapi.co/api/v2/pokemon/${inputValue}/`);
         // setInputValue('');
     }
 

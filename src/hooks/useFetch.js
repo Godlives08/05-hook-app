@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 export const useFetch = (url, obj = { data: null, isLoadind: true, hasError: null,e:null}) => {
 
     const [state, setState] = useState({ obj });
+    const [url2, setUrl2] = useState(url);
 
 
 
@@ -16,7 +17,7 @@ export const useFetch = (url, obj = { data: null, isLoadind: true, hasError: nul
 
         // const resp = await fetch(url).catch(setState({ ...state, isLoadind: false, hasError: 404 }));
 
-        const resp = await fetch(url).then(res => {
+        const resp = await fetch(url2).then(res => {
             if (res.ok) {
                 return res
             } else if (res.status === 404){
@@ -38,11 +39,11 @@ export const useFetch = (url, obj = { data: null, isLoadind: true, hasError: nul
 
     useEffect(() => {
         getPokemon().then('OK').catch((err) => { console.log(err);})
-    }, [url])
+    }, [url2])
 
 
     return {
-        ...state
+        ...state, setUrl2
     }
 
 }
