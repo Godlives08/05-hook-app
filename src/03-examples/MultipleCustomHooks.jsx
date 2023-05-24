@@ -8,7 +8,7 @@ export const MultipleCustomHooks = () => {
   const [page, setPage] = useState(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=15`);
   const { counter, decrement, increment, reset, setCounter } = useCounter(1);
   const { data, hasError, isLoadind, e, setUrl2 } = useFetch(`https://pokeapi.co/api/v2/pokemon/${counter}/`);
-  const { data: datalist, hasError: hasErrorlist, isLoadind: isLoadindlist, e: elist } = useFetch(page);
+  const { data: datalist, hasError: hasErrorlist, isLoadind: isLoadindlist, e: elist, setUrl2:setUrl2list } = useFetch(page);
   console.log(data, hasError, isLoadind);
 
   const { results, next, previous } = !!datalist && datalist;
@@ -62,12 +62,12 @@ export const MultipleCustomHooks = () => {
               <nav aria-label="Page navigation example">
                 <ul className="pagination justify-content-center">
                   <li className="page-item">
-                    <button onClick={() => setPage(previous)} className="page-link">Previous</button>
+                    <button onClick={() => setUrl2list(previous)} className="page-link">Previous</button>
 
                   </li>
 
                   <li className="page-item">
-                    <button onClick={() => setPage(next)} className="page-link">Next</button>
+                    <button onClick={() => setUrl2list(next)} className="page-link">Next</button>
                   </li>
                 </ul>
               </nav>
