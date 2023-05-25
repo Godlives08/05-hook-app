@@ -24,16 +24,16 @@ export const DetallesPokemon = ({ url, datapoke }) => {
             <div className="list-group pt-4" id="list-tab" role="tablist">
               <a className="list-group-item list-group-item-action active" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Forma</a>
               <a className="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Entries PokeDex</a>
-              <a className="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a>
+              <a className="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Evoluciones</a>
             </div>
           </div>
           <div className="col-8">
             <div className="tab-content" id="nav-tabContent">
               <div className="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                <img src={front_default} className="card-img-top imgpoke rounded-circle bg-light" alt="..." />
-                <img src={back_default} className="card-img-top imgpoke rounded-circle bg-light" alt="..." />
-                <img src={front_shiny} className="card-img-top imgpoke rounded-circle bg-light" alt="..." />
-                <img src={back_shiny} className="card-img-top imgpoke rounded-circle bg-light" alt="..." />
+                <img src={front_default} className="card-img-top imgpoke rounded-circle bg-light ms-1" alt="..." />
+                <img src={back_default} className="card-img-top imgpoke rounded-circle bg-light ms-1" alt="..." />
+                <img src={front_shiny} className="card-img-top imgpoke rounded-circle bg-light ms-1" alt="..." />
+                <img src={back_shiny} className="card-img-top imgpoke rounded-circle bg-light ms-1" alt="..." />
               </div>
               <div className="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
                 <div className="accordion" id="accordionExample">
@@ -56,7 +56,11 @@ export const DetallesPokemon = ({ url, datapoke }) => {
 
                 </div>
               </div>
-              <div className="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+              <div className="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                <div className="alert alert-info text-center">
+                  Soon...
+                </div>
+              </div>
             </div>
           </div>
         </div>

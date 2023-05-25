@@ -15,9 +15,9 @@ export const DatosPokemon = ({ data, setUrl2 }) => {
                 </div>
                 <div className="col-4">
                     <div className="float-end m-3">
-                        {id > 1 ? (<button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id - 1}/`)} className="btn btn-primary">◀</button>) : ''}
-                        <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${1}/`)} className="btn btn-primary">🔄</button>
-                        <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id + 1}/`)} className="btn btn-primary">▶</button>
+                        {id > 1 ? (<button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id - 1}/`)} className="btn btn-outline-primary fs-4">⏮️</button>) : ''}
+                        <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${1}/`)} className="btn btn-outline-primary fs-4">🔄</button>
+                        <button onClick={() => setUrl2(`https://pokeapi.co/api/v2/pokemon/${id + 1}/`)} className="btn btn-outline-primary fs-4">⏭️</button>
                     </div>
                 </div>
                 <div className="col-12">

@@ -37,7 +37,7 @@ export const SearchPoke = ({ setUrl2 }) => {
                     }
                     
                 </datalist>
-                <button className="btn btn-outline-success" type="submit" onClick={onSubmit}>Search</button>
+                <button className="btn btn-outline-dark" type="submit" onClick={onSubmit}>Search</button>
             </form>
         </>
 
