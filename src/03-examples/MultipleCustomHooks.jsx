@@ -14,9 +14,9 @@ export const MultipleCustomHooks = () => {
   if (hasError === 404) {
     return (
       <>
-        <nav className="navbar navbar-light bg-light">
+        <nav className="navbar navbar-light bg-light rounded">
           <div className="container-fluid">
-            <a className="navbar-brand"><h1>Poke-Dex</h1></a>
+            <a className="navbar-brand"><h1><img src="/favicon.ico" alt="" /> Poke-Dex</h1></a>
             <SearchPoke setUrl2={setUrl2} />
           </div>
         </nav>
@@ -33,9 +33,9 @@ export const MultipleCustomHooks = () => {
     <>
       <div className="row">
         <div className="col-12">
-          <nav className="navbar navbar-light bg-light">
+          <nav className="navbar navbar-light bg-light rounded">
             <div className="container-fluid">
-              <a className="navbar-brand"><h1>Poke-Dex</h1></a>
+              <a className="navbar-brand"><h1><img className="p-2 mb-1" src="/favicon.ico" alt="" />Poke-Dex</h1></a>
               <SearchPoke setUrl2={setUrl2} />
             </div>
           </nav>

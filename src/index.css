@@ -1,5 +1,10 @@
+*{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
   padding: 20px;
+  background-image: url('pokemon.jpg');
 }
 
 button {
@@ -16,9 +21,19 @@ button {
 }
 
 .iconpoke{
-  width: 20% !important;
+  width: 18% !important;
+  float: right !important;
 }
 
 .btnpokeinfo{
   width: 99% !important;
+}
+
+.btnpokelist{
+  border-radius: 4px;
+}
+
+.imgoficial{
+  width: 350px !important;
+  height: 350px !important;
 }

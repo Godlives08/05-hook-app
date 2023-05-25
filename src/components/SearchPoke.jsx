@@ -24,7 +24,7 @@ export const SearchPoke = ({ setUrl2 }) => {
                 <input name="srcpoke" id="srcpoke" className="form-control me-2" aria-label="Search"
                     type="text"
                     list="list-pokemon"
-                    placeholder="Buscar Gifs"
+                    placeholder="Search Pokemon..."
                     value={inputValue}
                     onChange={onChangeInput}
                     

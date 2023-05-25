@@ -16,7 +16,7 @@ export const ListPokemon = ({setUrl2}) => {
 
                     ))
                 }
-                <li className="list-group-item p-0">
+                <li className="list-group-item p-0 border-0">
                     <nav aria-label="Page navigation example">
                         <ul className="pagination justify-content-center w-100">
                             <li className="page-item w-50">
