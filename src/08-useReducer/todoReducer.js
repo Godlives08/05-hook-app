@@ -1,9 +1,12 @@
 export const todoReducer = (initialState = [], action = {}) => {
     switch (action.type) {
         case 'ADD':
-            throw new Error(`La accion "${action.type}" aun no esta implementada`);
+            console.log(action);
+            initialState = [...initialState, action.payload];
+            return initialState;
 
         default:
-            return initialState;
+            throw new Error(`La accion "${action.type}" aun no esta implementada`);
+            
     }
 }

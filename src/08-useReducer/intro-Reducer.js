@@ -7,7 +7,7 @@ const initialState = [{
 
 // Funcion de Reducer ;
 const todoReducer = (state = initialState, action = {}) => {
-    
+  
     if (action.type === 'ADD') {
         state = [...state, action.payload];
     }

@@ -22,7 +22,7 @@ import { TodoApp } from './08-useReducer/TodoApp';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <>
 
       {// Practica 01
@@ -52,5 +52,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       {/* <Padre /> */}
       <TodoApp />
     </>
-  </React.StrictMode>
+  // </React.StrictMode>
 )
