@@ -1,33 +1,22 @@
 import { useState } from "react"
 import { useForm } from "../hooks";
 
-export const FormAddTodo = ({ onHandleTodo }) => {
+export const FormAddTodo = ({ onNewTodo }) => {
 
     const { description, onInputChange, resetForm } = useForm({ description: '' })
-
-    // const [descripcion, setDescricion] = useState('');
-    // const onChangeInput = (event) => {
-    //     // console.log(event.target.value)
-    //     setDescricion(event.target.value)
-    // }
-
-    
-
     const onSubmit = (event) => {
         event.preventDefault();
-        if (description.length  <= 1 ) return;
+        if (description.length <= 1) return;
 
         const newTodo = {
             id: new Date().getTime(),
             description,
             done: false,
         };
-    
-        onHandleTodo(newTodo);
+
+        onNewTodo(newTodo);
         resetForm(event);
     }
-
-
 
     return (
         <>

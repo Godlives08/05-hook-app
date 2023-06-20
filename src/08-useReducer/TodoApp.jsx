@@ -1,25 +1,46 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { todoReducer } from "./todoReducer";
 import { FormAddTodo, TodoList } from "../components";
 
 
 const initialState = [
-    {
-        id: new Date().getTime(),
-        description: 'Agregar tarea',
-        done: true,
-    }
+
 ]
 
-export const TodoApp = () => {
-    const [todos, dispatch] = useReducer(todoReducer, initialState);
+const getTodoLS = () => {
+    return JSON.parse(localStorage.getItem('todos')) || [];
+}
 
-    const handleTodo = (newTodo) => {
+export const TodoApp = () => {
+    const [todos, dispatch] = useReducer(todoReducer, initialState, getTodoLS);
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos) || []);
+    }, [todos])
+
+
+    const handleNewTodo = (newTodo) => {
         const addNewTodo = {
             type: 'ADD',
             payload: newTodo
         }
         dispatch(addNewTodo);
+    }
+
+    const handleDeleteTodo = (deleteTodo) => {
+        const delTodo = {
+            type: 'DELETE',
+            payload: deleteTodo
+        }
+        dispatch(delTodo);
+    }
+
+    const handleUpdateTodo = (updateTodo) => {
+        const updTodo = {
+            type: 'UPDATE',
+            payload: updateTodo
+        }
+        dispatch(updTodo);
     }
 
     return (
@@ -28,7 +49,7 @@ export const TodoApp = () => {
             <hr />
             <div className="row">
                 <div className="col-5">
-                    <FormAddTodo onHandleTodo={handleTodo} />
+                    <FormAddTodo onNewTodo={handleNewTodo} />
 
                 </div>
                 <div className="col-7">
@@ -36,16 +57,16 @@ export const TodoApp = () => {
                         <div className="col-12">
                             <div className="row">
                                 <div className="col-6">
-                                    <h1>Por hacer: <small>10</small></h1>
+                                    <h1 className="display-6">Pendientes: <small>{todos.filter(x => x.done === false).length}</small></h1>
                                 </div>
                                 <div className="col-6">
-                                    <h1>Pendientes: <small>5</small></h1>
+                                    <h1 className="display-6 float-end">Total de Tareas: <small>{todos.length}</small></h1>
                                 </div>
                             </div>
                         </div>
 
                         <div className="col-12">
-                            <TodoList todos={todos} />
+                            <TodoList todos={todos} onDeleteTodo={handleDeleteTodo} onUpdateTodo={handleUpdateTodo}/>
                         </div>
 
                     </div>
